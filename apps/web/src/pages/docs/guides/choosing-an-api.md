@@ -41,7 +41,7 @@ Hooks combine prepared actions with Wagmi clients and TanStack Query.
 import { useNameRenewalPrice } from "@thenamespace/ens-components-v2/hooks";
 
 const renewal = useNameRenewalPrice({
-  duration: 31_557_600n,
+  duration: 31_536_000n,
   input: "example.eth",
 });
 ```

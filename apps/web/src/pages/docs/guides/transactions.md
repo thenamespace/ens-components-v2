@@ -14,7 +14,7 @@ Each `prepare*Write` action returns a typed `PreparedContractWrite`.
 ```ts [prepare-renewal.ts]
 const renewal = prepareRenewNameWrite({
   account,
-  duration: 31_557_600n,
+  duration: 31_536_000n,
   input: "example.eth",
   paymentTokenAddress,
   registrarAddress,

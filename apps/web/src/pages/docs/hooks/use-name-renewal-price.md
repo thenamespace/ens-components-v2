@@ -20,7 +20,7 @@ import { useNameRenewalPrice } from "@thenamespace/ens-components-v2/hooks";
 import { formatUnits } from "viem";
 
 const quote = useNameRenewalPrice({
-  duration: 31_557_600n,
+  duration: 31_536_000n,
   input: "example",
 });
 

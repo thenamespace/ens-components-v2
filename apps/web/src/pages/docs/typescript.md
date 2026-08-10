@@ -35,7 +35,7 @@ Query hooks preserve TanStack Query `select` inference.
 import { useNameRegistrationPrice } from "@thenamespace/ens-components-v2/hooks";
 const price = useNameRegistrationPrice({
   input: "example.eth",
-  duration: 31_557_600n,
+  duration: 31_536_000n,
   query: {
     select: (data) => data.price,
   },

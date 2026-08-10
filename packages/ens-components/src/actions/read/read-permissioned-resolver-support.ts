@@ -6,7 +6,7 @@ import { permissionedResolverAbi } from "#/data/abi";
 import { isNonZeroAddress } from "#/lib/helpers";
 
 /** ERC-165 interface ID advertised by the deployed ENS v2 PermissionedResolver. */
-export const PERMISSIONED_RESOLVER_INTERFACE_ID = "0x2c7442c9" as const satisfies Hex;
+export const PERMISSIONED_RESOLVER_INTERFACE_ID = "0x91413117" as const satisfies Hex;
 
 export type PreparePermissionedResolverSupportReadError = "INVALID_RESOLVER_ADDRESS";
 
