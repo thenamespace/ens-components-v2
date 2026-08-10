@@ -1,12 +1,7 @@
-/** Full deployed ABI. This version uses initialize(address,uint256). */
+/** ABI from the July 30, 2026 ENS v2 Sepolia deployment. */
 export const permissionedResolverAbi = [
   {
     inputs: [
-      {
-        internalType: "contract IHCAFactoryBasic",
-        name: "hcaFactory",
-        type: "address",
-      },
       {
         internalType: "address",
         name: "namer",
@@ -200,11 +195,6 @@ export const permissionedResolverAbi = [
   {
     inputs: [],
     name: "InvalidInitialization",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "InvalidOwner",
     type: "error",
   },
   {
@@ -689,19 +679,6 @@ export const permissionedResolverAbi = [
         internalType: "bytes",
         name: "value",
         type: "bytes",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "HCA_FACTORY",
-    outputs: [
-      {
-        internalType: "contract IHCAFactoryBasic",
-        name: "",
-        type: "address",
       },
     ],
     stateMutability: "view",
@@ -1200,6 +1177,11 @@ export const permissionedResolverAbi = [
         internalType: "uint256",
         name: "roleBitmap",
         type: "uint256",
+      },
+      {
+        internalType: "bytes[]",
+        name: "setters",
+        type: "bytes[]",
       },
     ],
     name: "initialize",

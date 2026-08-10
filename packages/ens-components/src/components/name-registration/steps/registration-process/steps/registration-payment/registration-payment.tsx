@@ -62,8 +62,8 @@ export function RegistrationPayment({
       {registration.actionStatus === "confirming-approval" ||
       registration.actionStatus === "confirming-address-record" ||
       registration.actionStatus === "confirming-batch" ||
+      registration.actionStatus === "confirming-default-primary-name" ||
       registration.actionStatus === "confirming-l1-primary-name" ||
-      registration.actionStatus === "confirming-l2-primary-name" ||
       registration.actionStatus === "confirming-registration" ? (
         <TransactionProgress
           account={storedAttempt?.account}

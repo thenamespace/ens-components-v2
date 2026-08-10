@@ -107,7 +107,7 @@ export function preparePermissionedResolverDeploymentWrite(
   const initData = encodeFunctionData({
     abi: permissionedResolverAbi,
     functionName: "initialize",
-    args: [owner, PERMISSIONED_RESOLVER_ALL_ROLES],
+    args: [owner, PERMISSIONED_RESOLVER_ALL_ROLES, []],
   });
   const saltValue = BigInt(salt);
   const data = encodeFunctionData({

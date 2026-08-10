@@ -1,15 +1,10 @@
-/** Full ABI from the official May 2026 ENSv2 Sepolia deployment. */
+/** ABI from the July 30, 2026 ENS v2 Sepolia deployment. */
 export const ethRegistrarAbi = [
   {
     inputs: [
       {
         internalType: "address",
         name: "owner_",
-        type: "address",
-      },
-      {
-        internalType: "contract IHCAFactoryBasic",
-        name: "hcaFactory",
         type: "address",
       },
       {
@@ -387,19 +382,6 @@ export const ethRegistrarAbi = [
   },
   {
     inputs: [],
-    name: "HCA_FACTORY",
-    outputs: [
-      {
-        internalType: "contract IHCAFactoryBasic",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "MAX_COMMITMENT_AGE",
     outputs: [
       {
@@ -504,7 +486,7 @@ export const ethRegistrarAbi = [
     outputs: [
       {
         internalType: "uint256",
-        name: "bae",
+        name: "base",
         type: "uint256",
       },
       {

@@ -33,8 +33,8 @@ A custom configuration must provide:
 - Universal Resolver v2
 - Permissioned Resolver implementation
 - Verifiable Factory
+- Default Reverse Registrar Adapter
 - L1 reverse registrar
-- L2 reverse registrar
 - at least one ERC-20 payment token
 
 Each contract entry contains both `address` and `abi`.

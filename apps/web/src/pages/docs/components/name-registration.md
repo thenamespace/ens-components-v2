@@ -69,7 +69,7 @@ batch. Other wallets receive the same writes as ordered transactions, with
 each write confirmed before the next is submitted.
 
 ```tsx
-<NameRegistration defaultPaymentTokenAddress="0x2922bcd677af690fcd1ecc699519e4bfabc73ff8" />
+<NameRegistration defaultPaymentTokenAddress="0x5472c5725a00b7ba11f0794a79d08ade6f4683bd" />
 ```
 
 The default Sepolia configuration provides Mock USDC and Mock DAI. The payment
@@ -147,7 +147,7 @@ customizable through `messages`.
 | `onCommit`         | The commitment receipt succeeds and the registration attempt is stored locally.                         |
 | `onApprove`        | A required ERC-20 approval receipt succeeds. It does not run when the existing allowance is sufficient. |
 | `onRegister`       | The registration receipt succeeds and registration details are available.                               |
-| `onSetPrimaryName` | The forward address, ENS v2 reverse, and L1 reverse writes are all confirmed.                           |
+| `onSetPrimaryName` | The forward address, default reverse, and L1 reverse writes are all confirmed.                          |
 | `onError`          | An attempted resolver, commitment, payment, registration, address-record, or primary-name phase fails.  |
 
 Confirmed transaction events contain `chainId`, `transactionHash`, and the
@@ -155,10 +155,11 @@ Viem `TransactionReceipt`. Operation-specific payloads include the related
 addresses and values.
 For `onSetPrimaryName`, the base receipt and hash belong to the final L1
 reverse write. The event also includes the address-record receipt and hash,
-the ENS v2 reverse receipt and hash, and both reverse-registrar addresses.
+the default reverse receipt and hash, the adapter address, and the L1 reverse
+registrar address.
 
 `onError.phase` is `"resolver"`, `"commitment"`, `"approval"`,
-`"registration"`, `"address-record"`, `"l2-primary-name"`, or
+`"registration"`, `"address-record"`, `"default-primary-name"`, or
 `"l1-primary-name"`.
 `transactionHash` is included when a transaction was submitted.
 
@@ -184,12 +185,13 @@ The **Set as primary name** switch is in Advanced options and is off by
 default. When selected, the component appends three writes after registration:
 
 1. `setAddr(node, 60, addressBytes)` on the registered name's resolver;
-2. `setName(name)` on the ENS v2 `L2ReverseRegistrar`;
+2. `setName(account, name)` on the deployed `DefaultReverseRegistrarAdapter`;
 3. `setName(name)` on the registry-backed L1 `ReverseRegistrar`.
 
 The explicit Ethereum address record is required for L1 forward verification.
-Both reverse registrars update the connected account because `setName` derives
-the target address from `msg.sender`. Writing both reverse representations
+The adapter explicitly receives the connected account and authorizes the
+caller, while the L1 registrar derives the account from `msg.sender`. Writing
+both reverse representations
 matches the ENS v2 app while preserving compatibility with the established
 `addr.reverse` resolution path.
 The built-in dedicated `PermissionedResolver` grants the connected account the

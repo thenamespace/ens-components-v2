@@ -2,10 +2,10 @@ import type { Address } from "viem";
 
 import { DaiIcon, UsdcIcon } from "#/components/icons";
 import {
+  defaultReverseRegistrarAdapterAbi,
   ethRegistrarAbi,
   ethRegistryAbi,
   l1ReverseRegistrarAbi,
-  l2ReverseRegistrarAbi,
   permissionedResolverAbi,
   universalResolverV2Abi,
   verifiableFactoryAbi,
@@ -23,12 +23,12 @@ export interface EnsPaymentToken {
 export type EnsPaymentTokens = readonly [EnsPaymentToken, ...EnsPaymentToken[]];
 
 export interface EnsContracts {
-  readonly l1ReverseRegistrar: {
-    readonly abi: typeof l1ReverseRegistrarAbi;
+  readonly defaultReverseRegistrarAdapter: {
+    readonly abi: typeof defaultReverseRegistrarAdapterAbi;
     readonly address: Address;
   };
-  readonly l2ReverseRegistrar: {
-    readonly abi: typeof l2ReverseRegistrarAbi;
+  readonly l1ReverseRegistrar: {
+    readonly abi: typeof l1ReverseRegistrarAbi;
     readonly address: Address;
   };
   readonly ethRegistrar: {
@@ -55,32 +55,32 @@ export interface EnsContracts {
 }
 
 export const testnetContracts = {
+  defaultReverseRegistrarAdapter: {
+    address: "0x7a84e241f862d73960d73c26d68c3c8f89f0b18f" as Address,
+    abi: defaultReverseRegistrarAdapterAbi,
+  },
   l1ReverseRegistrar: {
     address: "0xA0a1AbcDAe1a2a4A2EF8e9113Ff0e02DD81DC0C6" as Address,
     abi: l1ReverseRegistrarAbi,
   },
-  l2ReverseRegistrar: {
-    address: "0xEb8269Fb39290F31C4c29CEc548807cA2133AbB4" as Address,
-    abi: l2ReverseRegistrarAbi,
-  },
   ethRegistrar: {
-    address: "0x8c2e866b439358c41ae05de9cbe8a00bfefaffca" as Address,
+    address: "0xa88553f454b77203b0d036a05c894d555eaaa2cc" as Address,
     abi: ethRegistrarAbi,
   },
   ethRegistry: {
-    address: "0xdedb92913a25abe1f7bcdd85d8a344a43b398b67" as Address,
+    address: "0xbdc85dd5b15d7ecb354cd7cb6f2c50b4f2c4f0e2" as Address,
     abi: ethRegistryAbi,
   },
   paymentTokens: [
     {
-      address: "0xba11ebdb3f9a2c5946d8629517f06364e53a2e10",
+      address: "0x768f42455a2d082e23ceef7d51e5787c82d67a39",
       decimals: 6,
       icon: UsdcIcon,
       name: "Mock USDC",
       symbol: "USDC",
     },
     {
-      address: "0x2922bcd677af690fcd1ecc699519e4bfabc73ff8",
+      address: "0x5472c5725a00b7ba11f0794a79d08ade6f4683bd",
       decimals: 18,
       icon: DaiIcon,
       name: "Mock DAI",
@@ -88,7 +88,7 @@ export const testnetContracts = {
     },
   ] as const satisfies EnsPaymentTokens,
   permissionedResolverImplementation: {
-    address: "0xdce5205a553573ffd47629327dddf36186022ffa" as Address,
+    address: "0x9eae5c2730a7dd16bdd1dee6421a1b91e3b0365e" as Address,
     abi: permissionedResolverAbi,
   },
   universalResolverV2: {
@@ -96,7 +96,7 @@ export const testnetContracts = {
     abi: universalResolverV2Abi,
   },
   verifiableFactory: {
-    address: "0xd2a632d8a8b67c2c4398c255cbd7af8dd7236198" as Address,
+    address: "0x10dc6333cdfe1fcef624c6e0a8221b91804cd7ef" as Address,
     abi: verifiableFactoryAbi,
   },
 } as const satisfies EnsContracts;

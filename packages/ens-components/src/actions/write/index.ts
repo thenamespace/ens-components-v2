@@ -7,7 +7,7 @@ export * from "#/actions/write/execute-contract-writes";
 export * from "#/actions/write/register-name";
 export * from "#/actions/write/renew-name";
 export * from "#/actions/write/set-address-record";
+export * from "#/actions/write/set-default-primary-name";
 export * from "#/actions/write/set-l1-primary-name";
-export * from "#/actions/write/set-l2-primary-name";
 export * from "#/actions/write/update-name-profile-records";
 export * from "#/actions/write/wallet-capabilities";

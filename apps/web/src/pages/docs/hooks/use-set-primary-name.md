@@ -5,7 +5,8 @@ description: Set and verify an account's ENS primary name.
 
 # useSetPrimaryName
 
-Sets an account's forward address record, L2 reverse name, and L1 reverse name.
+Sets an account's forward address record, default reverse name, and L1 reverse
+name.
 
 ## Import
 
@@ -29,13 +30,14 @@ primaryName.mutate({
 
 ```ts
 interface UseSetPrimaryNameParameters {
+  defaultReverseRegistrarAdapterAddress?: Address;
   l1ReverseRegistrarAddress?: Address;
-  l2ReverseRegistrarAddress?: Address;
   mutation?: UseMutationOptions;
 }
 ```
 
-Reverse registrar addresses default to the provider configuration.
+The adapter and reverse registrar addresses default to the provider
+configuration.
 
 ## Mutation Variables
 
@@ -60,5 +62,5 @@ other wallets submit them in dependency order.
 
 ## Actions
 
-Uses `prepareSetAddressRecordWrite`, `prepareSetL2PrimaryNameWrite`,
+Uses `prepareSetAddressRecordWrite`, `prepareSetDefaultPrimaryNameWrite`,
 `prepareSetL1PrimaryNameWrite`, and `useExecuteContractWrites`.

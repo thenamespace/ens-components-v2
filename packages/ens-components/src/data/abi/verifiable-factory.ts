@@ -1,9 +1,20 @@
-/** Full ABI from the official May 2026 ENSv2 Sepolia deployment. */
+/** ABI from the July 30, 2026 ENS v2 Sepolia deployment. */
 export const verifiableFactoryAbi = [
   {
     inputs: [],
     stateMutability: "nonpayable",
     type: "constructor",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "proxy",
+        type: "address",
+      },
+    ],
+    name: "VerificationFailed",
+    type: "error",
   },
   {
     anonymous: false,
@@ -85,18 +96,13 @@ export const verifiableFactoryAbi = [
         name: "proxy",
         type: "address",
       },
-      {
-        internalType: "address",
-        name: "expectedImplementation",
-        type: "address",
-      },
     ],
     name: "verifyContract",
     outputs: [
       {
-        internalType: "bool",
-        name: "",
-        type: "bool",
+        internalType: "address",
+        name: "implementation",
+        type: "address",
       },
     ],
     stateMutability: "view",

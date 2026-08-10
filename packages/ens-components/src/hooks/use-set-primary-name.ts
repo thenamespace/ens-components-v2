@@ -8,13 +8,13 @@ import type { Address } from "viem";
 import type {
   ExecuteContractWritesResult,
   PrepareSetAddressRecordWriteError,
+  PrepareSetDefaultPrimaryNameWriteError,
   PrepareSetL1PrimaryNameWriteError,
-  PrepareSetL2PrimaryNameWriteError,
 } from "#/actions";
 import {
   prepareSetAddressRecordWrite,
+  prepareSetDefaultPrimaryNameWrite,
   prepareSetL1PrimaryNameWrite,
-  prepareSetL2PrimaryNameWrite,
 } from "#/actions";
 import {
   useExecuteContractWrites,
@@ -37,13 +37,13 @@ export interface SetPrimaryNameVariables extends PreparedWriteVariables {
 export type SetPrimaryNameError =
   | ExecuteContractWritesMutationError
   | PrepareSetAddressRecordWriteError
+  | PrepareSetDefaultPrimaryNameWriteError
   | PrepareSetL1PrimaryNameWriteError
-  | PrepareSetL2PrimaryNameWriteError
   | ParseNameInputError;
 
 export interface UseSetPrimaryNameParameters {
+  defaultReverseRegistrarAdapterAddress?: Address;
   l1ReverseRegistrarAddress?: Address;
-  l2ReverseRegistrarAddress?: Address;
   mutation?: Omit<
     UseMutationOptions<ExecuteContractWritesResult, SetPrimaryNameError, SetPrimaryNameVariables>,
     "mutationFn" | "mutationKey"
@@ -52,10 +52,11 @@ export interface UseSetPrimaryNameParameters {
 
 export function useSetPrimaryName(parameters: UseSetPrimaryNameParameters = {}) {
   const { chain, contracts } = useEnsConfig();
+  const defaultReverseRegistrarAdapterAddress =
+    parameters.defaultReverseRegistrarAdapterAddress ??
+    contracts.defaultReverseRegistrarAdapter.address;
   const l1ReverseRegistrarAddress =
     parameters.l1ReverseRegistrarAddress ?? contracts.l1ReverseRegistrar.address;
-  const l2ReverseRegistrarAddress =
-    parameters.l2ReverseRegistrarAddress ?? contracts.l2ReverseRegistrar.address;
   const execution = useExecuteContractWrites();
 
   return useMutation<ExecuteContractWritesResult, SetPrimaryNameError, SetPrimaryNameVariables>({
@@ -64,8 +65,8 @@ export function useSetPrimaryName(parameters: UseSetPrimaryNameParameters = {}) 
       "ens",
       "set-primary-name",
       chain.id,
+      defaultReverseRegistrarAdapterAddress,
       l1ReverseRegistrarAddress,
-      l2ReverseRegistrarAddress,
     ],
     mutationFn: async (variables) => {
       const shared = {
@@ -78,11 +79,11 @@ export function useSetPrimaryName(parameters: UseSetPrimaryNameParameters = {}) 
         resolverAddress: variables.resolverAddress,
       });
       if (addressRecord.isErr()) throw addressRecord.error;
-      const l2PrimaryName = prepareSetL2PrimaryNameWrite({
+      const defaultPrimaryName = prepareSetDefaultPrimaryNameWrite({
         ...shared,
-        l2ReverseRegistrarAddress,
+        defaultReverseRegistrarAdapterAddress,
       });
-      if (l2PrimaryName.isErr()) throw l2PrimaryName.error;
+      if (defaultPrimaryName.isErr()) throw defaultPrimaryName.error;
       const l1PrimaryName = prepareSetL1PrimaryNameWrite({
         ...shared,
         l1ReverseRegistrarAddress,
@@ -90,7 +91,7 @@ export function useSetPrimaryName(parameters: UseSetPrimaryNameParameters = {}) 
       if (l1PrimaryName.isErr()) throw l1PrimaryName.error;
 
       return execution.mutateAsync({
-        calls: [addressRecord.value, l2PrimaryName.value, l1PrimaryName.value],
+        calls: [addressRecord.value, defaultPrimaryName.value, l1PrimaryName.value],
         confirmation: variables.execution?.confirmation ?? "confirmed",
         ...(variables.execution?.onProgress === undefined
           ? {}

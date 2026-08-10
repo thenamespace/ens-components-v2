@@ -1,151 +1,316 @@
-/** Full ABI from the May 2026 ENS v2 Sepolia deployment. */
+/** ABI from the July 30, 2026 ENS v2 Sepolia deployment. */
 export const ethRegistryAbi = [
   {
     inputs: [
-      {
-        internalType: "contract IHCAFactoryBasic",
-        name: "hcaFactory",
-        type: "address",
-      },
       {
         internalType: "contract ILabelStore",
         name: "labelStore",
         type: "address",
       },
-      { internalType: "address", name: "rootAccount", type: "address" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
+      {
+        internalType: "address",
+        name: "rootAccount",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
   },
   {
     inputs: [
-      { internalType: "uint64", name: "oldExpiry", type: "uint64" },
-      { internalType: "uint64", name: "newExpiry", type: "uint64" },
+      {
+        internalType: "uint64",
+        name: "oldExpiry",
+        type: "uint64",
+      },
+      {
+        internalType: "uint64",
+        name: "newExpiry",
+        type: "uint64",
+      },
     ],
     name: "CannotReduceExpiry",
     type: "error",
   },
   {
-    inputs: [{ internalType: "uint64", name: "expiry", type: "uint64" }],
+    inputs: [
+      {
+        internalType: "uint64",
+        name: "expiry",
+        type: "uint64",
+      },
+    ],
     name: "CannotSetPastExpiry",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "resource", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "resource",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "EACCannotGrantRoles",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "resource", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "resource",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "EACCannotRevokeRoles",
     type: "error",
   },
-  { inputs: [], name: "EACInvalidAccount", type: "error" },
   {
-    inputs: [{ internalType: "uint256", name: "roleBitmap", type: "uint256" }],
+    inputs: [],
+    name: "EACInvalidAccount",
+    type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+    ],
     name: "EACInvalidRoleBitmap",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "resource", type: "uint256" },
-      { internalType: "uint256", name: "role", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "resource",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "role",
+        type: "uint256",
+      },
     ],
     name: "EACMaxAssignees",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "resource", type: "uint256" },
-      { internalType: "uint256", name: "role", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "resource",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "role",
+        type: "uint256",
+      },
     ],
     name: "EACMinAssignees",
     type: "error",
   },
-  { inputs: [], name: "EACRootResourceNotAllowed", type: "error" },
+  {
+    inputs: [],
+    name: "EACRootResourceNotAllowed",
+    type: "error",
+  },
   {
     inputs: [
-      { internalType: "uint256", name: "resource", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "resource",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "EACUnauthorizedAccountRoles",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "address", name: "sender", type: "address" },
-      { internalType: "uint256", name: "balance", type: "uint256" },
-      { internalType: "uint256", name: "needed", type: "uint256" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
+      {
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "balance",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "needed",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
     ],
     name: "ERC1155InsufficientBalance",
     type: "error",
   },
   {
-    inputs: [{ internalType: "address", name: "approver", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "approver",
+        type: "address",
+      },
+    ],
     name: "ERC1155InvalidApprover",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "idsLength", type: "uint256" },
-      { internalType: "uint256", name: "valuesLength", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "idsLength",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "valuesLength",
+        type: "uint256",
+      },
     ],
     name: "ERC1155InvalidArrayLength",
     type: "error",
   },
   {
-    inputs: [{ internalType: "address", name: "operator", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+    ],
     name: "ERC1155InvalidOperator",
     type: "error",
   },
   {
-    inputs: [{ internalType: "address", name: "receiver", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "receiver",
+        type: "address",
+      },
+    ],
     name: "ERC1155InvalidReceiver",
     type: "error",
   },
   {
-    inputs: [{ internalType: "address", name: "sender", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+    ],
     name: "ERC1155InvalidSender",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "address", name: "owner", type: "address" },
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
     ],
     name: "ERC1155MissingApprovalForAll",
     type: "error",
   },
   {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
     name: "LabelAlreadyRegistered",
     type: "error",
   },
   {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
     name: "LabelAlreadyReserved",
     type: "error",
   },
   {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
     name: "LabelExpired",
     type: "error",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "address", name: "from", type: "address" },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
     ],
     name: "TransferDisallowed",
     type: "error",
@@ -165,7 +330,12 @@ export const ethRegistryAbi = [
         name: "operator",
         type: "address",
       },
-      { indexed: false, internalType: "bool", name: "approved", type: "bool" },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
     ],
     name: "ApprovalForAll",
     type: "event",
@@ -241,7 +411,12 @@ export const ethRegistryAbi = [
         name: "labelHash",
         type: "bytes32",
       },
-      { indexed: false, internalType: "string", name: "label", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
       {
         indexed: false,
         internalType: "address",
@@ -279,7 +454,12 @@ export const ethRegistryAbi = [
         name: "labelHash",
         type: "bytes32",
       },
-      { indexed: false, internalType: "string", name: "label", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
       {
         indexed: false,
         internalType: "uint64",
@@ -324,7 +504,12 @@ export const ethRegistryAbi = [
         name: "parent",
         type: "address",
       },
-      { indexed: false, internalType: "string", name: "label", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
       {
         indexed: true,
         internalType: "address",
@@ -335,7 +520,12 @@ export const ethRegistryAbi = [
     name: "ParentUpdated",
     type: "event",
   },
-  { anonymous: false, inputs: [], name: "RegistryCreated", type: "event" },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "RegistryCreated",
+    type: "event",
+  },
   {
     anonymous: false,
     inputs: [
@@ -433,8 +623,18 @@ export const ethRegistryAbi = [
         name: "operator",
         type: "address",
       },
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
       {
         indexed: false,
         internalType: "uint256[]",
@@ -460,9 +660,24 @@ export const ethRegistryAbi = [
         name: "operator",
         type: "address",
       },
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
-      { indexed: false, internalType: "uint256", name: "id", type: "uint256" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
       {
         indexed: false,
         internalType: "uint256",
@@ -476,8 +691,18 @@ export const ethRegistryAbi = [
   {
     anonymous: false,
     inputs: [
-      { indexed: false, internalType: "string", name: "value", type: "string" },
-      { indexed: true, internalType: "uint256", name: "id", type: "uint256" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "value",
+        type: "string",
+      },
+      {
+        indexed: true,
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
     ],
     name: "URI",
     type: "event",
@@ -485,7 +710,12 @@ export const ethRegistryAbi = [
   {
     anonymous: false,
     inputs: [
-      { indexed: false, internalType: "string", name: "uri_", type: "string" },
+      {
+        indexed: false,
+        internalType: "string",
+        name: "uri",
+        type: "string",
+      },
       {
         indexed: false,
         internalType: "address",
@@ -504,83 +734,199 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [],
-    name: "HCA_FACTORY",
-    outputs: [{ internalType: "contract IHCAFactoryBasic", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "LABEL_STORE",
-    outputs: [{ internalType: "contract ILabelStore", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "contract ILabelStore",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "ROOT_RESOURCE",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "uint256", name: "id", type: "uint256" },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
     ],
     name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address[]", name: "accounts", type: "address[]" },
-      { internalType: "uint256[]", name: "ids", type: "uint256[]" },
+      {
+        internalType: "address[]",
+        name: "accounts",
+        type: "address[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
     ],
     name: "balanceOfBatch",
-    outputs: [{ internalType: "uint256[]", name: "", type: "uint256[]" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
-    name: "findExpiry",
-    outputs: [{ internalType: "uint64", name: "", type: "uint64" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
-    name: "findOwner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
-    name: "findTokenId",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
+    name: "findExpiry",
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
+    name: "findOwner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
+    name: "findTokenId",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
     ],
     name: "getAssigneeCount",
     outputs: [
-      { internalType: "uint256", name: "counts", type: "uint256" },
-      { internalType: "uint256", name: "mask", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "counts",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "mask",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "getExpiry",
-    outputs: [{ internalType: "uint64", name: "", type: "uint64" }],
+    outputs: [
+      {
+        internalType: "uint64",
+        name: "",
+        type: "uint64",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
+    name: "getOwner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
@@ -588,28 +934,66 @@ export const ethRegistryAbi = [
     inputs: [],
     name: "getParent",
     outputs: [
-      { internalType: "contract IRegistry", name: "parent", type: "address" },
-      { internalType: "string", name: "label", type: "string" },
+      {
+        internalType: "contract IRegistry",
+        name: "parent",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
     ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
     name: "getResolver",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "getResource",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "getState",
     outputs: [
       {
@@ -619,10 +1003,26 @@ export const ethRegistryAbi = [
             name: "status",
             type: "uint8",
           },
-          { internalType: "uint64", name: "expiry", type: "uint64" },
-          { internalType: "address", name: "latestOwner", type: "address" },
-          { internalType: "uint256", name: "tokenId", type: "uint256" },
-          { internalType: "uint256", name: "resource", type: "uint256" },
+          {
+            internalType: "uint64",
+            name: "expiry",
+            type: "uint64",
+          },
+          {
+            internalType: "address",
+            name: "latestOwner",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "tokenId",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "resource",
+            type: "uint256",
+          },
         ],
         internalType: "struct IPermissionedRegistry.State",
         name: "state",
@@ -633,7 +1033,13 @@ export const ethRegistryAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "getStatus",
     outputs: [
       {
@@ -646,117 +1052,310 @@ export const ethRegistryAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "string", name: "label", type: "string" }],
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+    ],
     name: "getSubregistry",
-    outputs: [{ internalType: "contract IRegistry", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
-    name: "getTokenId",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "contract IRegistry",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
+    name: "getTokenId",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "grantRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "grantRootRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+    ],
     name: "hasAssignees",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "hasRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "hasRootRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "address", name: "operator", type: "address" },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
     ],
     name: "isApprovedForAll",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "address", name: "namer", type: "address" }],
-    name: "isContractNamer",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "latestOwnerOf",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "ownerOf",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "string", name: "label", type: "string" },
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "contract IRegistry", name: "registry", type: "address" },
-      { internalType: "address", name: "resolver", type: "address" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "uint64", name: "expiry", type: "uint64" },
+      {
+        internalType: "address",
+        name: "namer",
+        type: "address",
+      },
+    ],
+    name: "isContractNamer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "latestOwnerOf",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "ownerOf",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        internalType: "contract IRegistry",
+        name: "registry",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "resolver",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "uint64",
+        name: "expiry",
+        type: "uint64",
+      },
     ],
     name: "register",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "uint64", name: "newExpiry", type: "uint64" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint64",
+        name: "newExpiry",
+        type: "uint64",
+      },
     ],
     name: "renew",
     outputs: [],
@@ -765,49 +1364,127 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "revokeRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "roleBitmap", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "roleBitmap",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "revokeRootRoles",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "roleCount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "address", name: "account", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
     ],
     name: "roles",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256[]", name: "ids", type: "uint256[]" },
-      { internalType: "uint256[]", name: "values", type: "uint256[]" },
-      { internalType: "bytes", name: "data", type: "bytes" },
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256[]",
+        name: "ids",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "values",
+        type: "uint256[]",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
     ],
     name: "safeBatchTransferFrom",
     outputs: [],
@@ -816,11 +1493,31 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "id", type: "uint256" },
-      { internalType: "uint256", name: "value", type: "uint256" },
-      { internalType: "bytes", name: "data", type: "bytes" },
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "value",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes",
+        name: "data",
+        type: "bytes",
+      },
     ],
     name: "safeTransferFrom",
     outputs: [],
@@ -829,8 +1526,16 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "bool", name: "approved", type: "bool" },
+      {
+        internalType: "address",
+        name: "operator",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
     ],
     name: "setApprovalForAll",
     outputs: [],
@@ -839,8 +1544,16 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "contract IRegistry", name: "parent", type: "address" },
-      { internalType: "string", name: "label", type: "string" },
+      {
+        internalType: "contract IRegistry",
+        name: "parent",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "label",
+        type: "string",
+      },
     ],
     name: "setParent",
     outputs: [],
@@ -849,8 +1562,16 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "address", name: "resolver", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "resolver",
+        type: "address",
+      },
     ],
     name: "setResolver",
     outputs: [],
@@ -859,8 +1580,16 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "uint256", name: "anyId", type: "uint256" },
-      { internalType: "contract IRegistry", name: "registry", type: "address" },
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+      {
+        internalType: "contract IRegistry",
+        name: "registry",
+        type: "address",
+      },
     ],
     name: "setSubregistry",
     outputs: [],
@@ -869,7 +1598,11 @@ export const ethRegistryAbi = [
   },
   {
     inputs: [
-      { internalType: "string", name: "uri_", type: "string" },
+      {
+        internalType: "string",
+        name: "uri_",
+        type: "string",
+      },
       {
         internalType: "contract IRegistryURIRenderer",
         name: "renderer",
@@ -882,23 +1615,53 @@ export const ethRegistryAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
+    inputs: [
+      {
+        internalType: "bytes4",
+        name: "interfaceId",
+        type: "bytes4",
+      },
+    ],
     name: "supportsInterface",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "anyId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "anyId",
+        type: "uint256",
+      },
+    ],
     name: "unregister",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
     name: "uri",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },

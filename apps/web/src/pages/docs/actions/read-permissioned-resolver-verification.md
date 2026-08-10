@@ -5,8 +5,8 @@ description: Verify a PermissionedResolver proxy deployment.
 
 # readPermissionedResolverVerification
 
-Calls `VerifiableFactory.verifyContract` for a resolver proxy and expected
-implementation address.
+Calls `VerifiableFactory.verifyContract(resolver)` and compares its returned
+implementation address with the expected Permissioned Resolver implementation.
 
 ## Import
 

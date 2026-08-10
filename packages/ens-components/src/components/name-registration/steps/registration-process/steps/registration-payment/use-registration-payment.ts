@@ -209,18 +209,18 @@ export function useRegistrationPayment({
     });
     if (
       result.addressRecord !== undefined &&
-      result.l1PrimaryName !== undefined &&
-      result.l2PrimaryName !== undefined
+      result.defaultPrimaryName !== undefined &&
+      result.l1PrimaryName !== undefined
     ) {
       emitComponentEvent(events.onSetPrimaryName, {
         account: attempt.account,
         addressRecordReceipt: result.addressRecord.receipt,
         addressRecordTransactionHash: result.addressRecord.transactionHash,
         chainId: chain.id,
+        defaultReverseReceipt: result.defaultPrimaryName.receipt,
+        defaultReverseRegistrarAdapterAddress: contracts.defaultReverseRegistrarAdapter.address,
+        defaultReverseTransactionHash: result.defaultPrimaryName.transactionHash,
         l1ReverseRegistrarAddress: contracts.l1ReverseRegistrar.address,
-        l2ReverseReceipt: result.l2PrimaryName.receipt,
-        l2ReverseRegistrarAddress: contracts.l2ReverseRegistrar.address,
-        l2ReverseTransactionHash: result.l2PrimaryName.transactionHash,
         name: result.details.name,
         owner: attempt.owner,
         receipt: result.l1PrimaryName.receipt,
@@ -301,12 +301,12 @@ export function useRegistrationPayment({
     const result = await submitRegistrationPayment({
       attempt: storedAttempt,
       commitment: refreshedCommitment.data,
+      defaultReverseRegistrarAdapterAddress: contracts.defaultReverseRegistrarAdapter.address,
       executeWrites: contractWrites.mutateAsync,
       payment: refreshedPayment.data,
       paymentToken,
       publicClient,
       l1ReverseRegistrarAddress: contracts.l1ReverseRegistrar.address,
-      l2ReverseRegistrarAddress: contracts.l2ReverseRegistrar.address,
       onProgress: handleProgress,
     });
     if (result.isErr()) {

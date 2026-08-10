@@ -29,8 +29,8 @@ the first token when `paymentTokenAddress` is omitted.
 
 | Token     | Address                                      | Decimals |
 | --------- | -------------------------------------------- | -------- |
-| Mock USDC | `0xba11ebdb3f9a2c5946d8629517f06364e53a2e10` | 6        |
-| Mock DAI  | `0x2922bcd677af690fcd1ecc699519e4bfabc73ff8` | 18       |
+| Mock USDC | `0x768f42455a2d082e23ceef7d51e5787c82d67a39` | 6        |
+| Mock DAI  | `0x5472c5725a00b7ba11f0794a79d08ade6f4683bd` | 18       |
 
 ## Custom Token
 

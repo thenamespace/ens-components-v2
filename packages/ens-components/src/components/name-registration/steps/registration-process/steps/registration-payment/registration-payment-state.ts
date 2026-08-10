@@ -6,22 +6,22 @@ export type PaymentActionStatus =
   | "confirming-address-record"
   | "confirming-approval"
   | "confirming-batch"
+  | "confirming-default-primary-name"
   | "confirming-l1-primary-name"
-  | "confirming-l2-primary-name"
   | "confirming-registration"
   | "idle"
   | "refreshing"
   | "registering"
   | "setting-address-record"
+  | "setting-default-primary-name"
   | "setting-l1-primary-name"
-  | "setting-l2-primary-name"
   | "switching";
 
 export type PaymentTransactionPhase =
   | "address-record"
   | "approval"
+  | "default-primary-name"
   | "l1-primary-name"
-  | "l2-primary-name"
   | "registration";
 
 export function getPaymentTransactionPhase(
@@ -29,8 +29,8 @@ export function getPaymentTransactionPhase(
 ): PaymentTransactionPhase {
   if (prepared.kind === "approve-payment-token") return "approval";
   if (prepared.kind === "set-address-record") return "address-record";
+  if (prepared.kind === "set-default-primary-name") return "default-primary-name";
   if (prepared.kind === "set-l1-primary-name") return "l1-primary-name";
-  if (prepared.kind === "set-l2-primary-name") return "l2-primary-name";
   return "registration";
 }
 
@@ -47,8 +47,8 @@ export function getPaymentActionStatus(
   if (phase === "l1-primary-name") {
     return state === "signing" ? "setting-l1-primary-name" : "confirming-l1-primary-name";
   }
-  if (phase === "l2-primary-name") {
-    return state === "signing" ? "setting-l2-primary-name" : "confirming-l2-primary-name";
+  if (phase === "default-primary-name") {
+    return state === "signing" ? "setting-default-primary-name" : "confirming-default-primary-name";
   }
   return state === "signing" ? "registering" : "confirming-registration";
 }
@@ -93,14 +93,14 @@ export function getRegistrationPaymentButtonLabel({
     "confirming-batch": setPrimaryName
       ? "Confirming registration and primary name"
       : "Confirming approval and registration",
+    "confirming-default-primary-name": "Confirming default primary name",
     "confirming-l1-primary-name": "Confirming Ethereum primary name",
-    "confirming-l2-primary-name": "Confirming ENS v2 primary name",
     "confirming-registration": "Confirming registration",
     refreshing: "Refreshing registration price",
     registering: "Confirm registration in wallet",
     "setting-address-record": "Confirm address record in wallet",
+    "setting-default-primary-name": "Confirm default primary name in wallet",
     "setting-l1-primary-name": "Confirm Ethereum primary name in wallet",
-    "setting-l2-primary-name": "Confirm ENS v2 primary name in wallet",
   };
   const pendingLabel = pendingLabels[actionStatus];
   if (pendingLabel !== undefined) return pendingLabel;

@@ -1,7 +1,14 @@
-import { err, errAsync, ok, type Result, type ResultAsync } from "neverthrow";
-import { type Address, type ContractFunctionParameters, type PublicClient } from "viem";
+import { err, errAsync, ok, okAsync, ResultAsync, type Result } from "neverthrow";
+import {
+  BaseError,
+  ContractFunctionRevertedError,
+  isAddressEqual,
+  type Address,
+  type ContractFunctionParameters,
+  type PublicClient,
+} from "viem";
 
-import { executeContractRead, type PreparedContractRead } from "#/actions/read/contract-reads";
+import type { PreparedContractRead } from "#/actions/read/contract-reads";
 import { verifiableFactoryAbi } from "#/data/abi";
 import { isNonZeroAddress } from "#/lib/helpers";
 
@@ -20,12 +27,12 @@ type PermissionedResolverVerificationRequest = ContractFunctionParameters<
   typeof verifiableFactoryAbi,
   "view",
   "verifyContract",
-  readonly [Address, Address]
+  readonly [Address]
 >;
 
 export type PreparedPermissionedResolverVerificationRead = PreparedContractRead<
   PermissionedResolverVerificationRequest,
-  boolean,
+  Address,
   "permissioned-resolver-verification",
   {
     readonly implementationAddress: Address;
@@ -39,6 +46,17 @@ export type ReadPermissionedResolverVerificationReturnType = boolean;
 export type ReadPermissionedResolverVerificationErrorType =
   | PreparePermissionedResolverVerificationReadError
   | "CONTRACT_READ_FAILED";
+
+function isVerificationFailed(error: unknown): boolean {
+  return (
+    error instanceof BaseError &&
+    error.walk(
+      (cause) =>
+        cause instanceof ContractFunctionRevertedError &&
+        cause.data?.errorName === "VerificationFailed",
+    ) !== null
+  );
+}
 
 /** Validates and prepares a VerifiableFactory implementation check. */
 export function preparePermissionedResolverVerificationRead(
@@ -67,7 +85,7 @@ export function preparePermissionedResolverVerificationRead(
       address: parameters.factoryAddress,
       abi: verifiableFactoryAbi,
       functionName: "verifyContract",
-      args: [parameters.resolverAddress, parameters.implementationAddress],
+      args: [parameters.resolverAddress],
     },
   });
 }
@@ -82,5 +100,15 @@ export function readPermissionedResolverVerification(
 > {
   const prepared = preparePermissionedResolverVerificationRead(parameters);
   if (prepared.isErr()) return errAsync(prepared.error);
-  return executeContractRead(publicClient, prepared.value);
+  return ResultAsync.fromPromise(
+    publicClient.readContract(prepared.value.request),
+    (error): "CONTRACT_READ_FAILED" | "UNVERIFIED" =>
+      isVerificationFailed(error) ? "UNVERIFIED" : "CONTRACT_READ_FAILED",
+  )
+    .map((implementationAddress) =>
+      isAddressEqual(implementationAddress, parameters.implementationAddress),
+    )
+    .orElse((error) =>
+      error === "UNVERIFIED" ? okAsync(false) : errAsync("CONTRACT_READ_FAILED" as const),
+    );
 }
